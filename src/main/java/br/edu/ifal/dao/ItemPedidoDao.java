@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ItemPedidoDao {
 
   public void save(ItemPedido itemPedido) {
-    String sql = "INSERT INTO ITEM_PEDIDO VALUES (?,?,?,?);";
+    String sql = "INSERT INTO ITEM_PEDIDO (ID_PEDIDO_FK, ID_PRODUTO_FK, QUANTIDADE, VALOR) VALUES (?,?,?,?);";
 
     try {
       Connection connection = ConnectionHelper.getConnection();

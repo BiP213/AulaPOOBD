@@ -13,7 +13,7 @@ import java.util.List;
 public class ClienteDao {
 
     public void save(Cliente cliente) {
-        String sql = "INSERT INTO CLIENTE VALUES (?,?,?,?);";
+        String sql = "INSERT INTO CLIENTE (CPF, NOME, ENDERECO, TELEFONE) VALUES (?,?,?,?);";
 
         try {
             Connection connection = ConnectionHelper.getConnection();

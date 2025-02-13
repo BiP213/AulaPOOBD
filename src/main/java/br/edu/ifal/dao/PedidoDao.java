@@ -15,7 +15,7 @@ import java.util.List;
 public class PedidoDao {
 
   public int save(Pedido pedido) {
-    String sql = "INSERT INTO PEDIDO VALUES (?,?,?);";
+    String sql = "INSERT INTO PEDIDO (CPF_CLIENTE_FK, CPF_FUNCIONARIO_FK, VALOR_TOTAL) VALUES (?,?,?);";
     int pedidoId = -1;
 
     try {
@@ -58,7 +58,7 @@ public class PedidoDao {
         int id = rs.getInt("ID");
         String cpfCliente = rs.getString("CPF_CLIENTE_FK");
         String cpfFuncionario = rs.getString("CPF_FUNCIONARIO_FK");
-        double valorTotal = rs.getDouble("VALORTOTAL");
+        double valorTotal = rs.getDouble("VALOR_TOTAL");
 
         Cliente cliente = new Cliente(cpfCliente);
         Funcionario funcionario = new Funcionario(cpfFuncionario);

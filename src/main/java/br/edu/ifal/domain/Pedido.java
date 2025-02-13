@@ -37,8 +37,8 @@ public class Pedido {
   public String toString() {
     return "Pedido{" +
         "id='" + id + '\'' +
-        ", cliente='" + cliente + '\'' +
-        ", funcionario='" + funcionario + '\'' +
+        ", cliente='" + cliente.getCpf() + '\'' +
+        ", funcionario='" + funcionario.getCpf() + '\'' +
         ", valorTotal='" + valorTotal + '\'' +
         '}';
   }

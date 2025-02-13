@@ -13,6 +13,12 @@ public class Produto {
     this.quantidade = quantidade;
   }
 
+  public Produto(String nome, double valorUnit, int quantidade) {
+    this.nome = nome;
+    this.valorUnit = valorUnit;
+    this.quantidade = quantidade;
+  }
+
   public int getId() {
     return id;
   }

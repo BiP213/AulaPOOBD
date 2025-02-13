@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProdutoDao {
   public void save(Produto produto) {
-    String sql = "INSERT INTO PRODUTO VALUES (?,?,?);";
+    String sql = "INSERT INTO PRODUTO (NOME, VALOR_UNIT, QUANTIDADE) VALUES (?,?,?);";
 
     try {
       Connection connection = ConnectionHelper.getConnection();
@@ -45,7 +45,7 @@ public class ProdutoDao {
       ResultSet rs = pst.executeQuery();
       if (rs.next()) {
         String nome = rs.getString("NOME");
-        double valorUnit = rs.getDouble("VALORUNIT");
+        double valorUnit = rs.getDouble("VALOR_UNIT");
         int quantidade = rs.getInt("QUANTIDADE");
 
         produto = new Produto(id, nome, valorUnit, quantidade);
@@ -75,7 +75,7 @@ public class ProdutoDao {
       while (rs.next()) {
         int id = rs.getInt("ID");
         String nome = rs.getString("NOME");
-        double valorUnit = rs.getDouble("VALORUNIT");
+        double valorUnit = rs.getDouble("VALOR_UNIT");
         int quantidade = rs.getInt("QUANTIDADE");
 
         Produto produto = new Produto(id, nome, valorUnit, quantidade);
@@ -91,5 +91,25 @@ public class ProdutoDao {
     }
 
     return lista;
+  }
+
+  public void updateQuantity(int id, int novaQuantidade) {
+    String sql = "UPDATE PRODUTO SET QUANTIDADE = ? WHERE ID = ?;";
+
+    try {
+      Connection connection = ConnectionHelper.getConnection();
+      PreparedStatement pst = connection.prepareStatement(sql);
+      pst.setInt(1, novaQuantidade);
+      pst.setInt(2, id);
+
+      pst.executeUpdate();
+
+      pst.close();
+      connection.close();
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
   }
 }

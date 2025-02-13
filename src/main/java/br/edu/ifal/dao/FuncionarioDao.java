@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FuncionarioDao {
   public void save(Funcionario funcionario) {
-    String sql = "INSERT INTO FUNCIONARIO VALUES (?,?,?,?);";
+    String sql = "INSERT INTO FUNCIONARIO (CPF, NOME, ENDERECO, TELEFONE) VALUES (?,?,?,?);";
 
     try {
       Connection connection = ConnectionHelper.getConnection();
