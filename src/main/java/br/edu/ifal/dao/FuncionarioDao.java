@@ -2,6 +2,7 @@ package br.edu.ifal.dao;
 
 import br.edu.ifal.db.ConnectionHelper;
 import br.edu.ifal.domain.Funcionario;
+import br.edu.ifal.domain.Produto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -63,5 +64,34 @@ public class FuncionarioDao {
     }
 
     return lista;
+  }
+
+  public Funcionario findByCpf(String cpfFuncionarioVenda) {
+    String sql = "SELECT * FROM FUNCIONARIO WHERE CPF = ?;";
+    Funcionario funcionario = null;
+
+    try {
+      Connection connection = ConnectionHelper.getConnection();
+      PreparedStatement pst = connection.prepareStatement(sql);
+
+      pst.setString(1, cpfFuncionarioVenda);
+      ResultSet rs = pst.executeQuery();
+      if (rs.next()) {
+        String nome = rs.getString("NOME");
+        String endereco = rs.getString("ENDERECO");
+        String telefone = rs.getString("TELEFONE");
+
+        funcionario = new Funcionario(cpfFuncionarioVenda, nome, endereco, telefone);
+      }
+
+      pst.close();
+      connection.close();
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+
+    return funcionario;
   }
 }
