@@ -5,7 +5,6 @@ public class Cliente {
     private String nome;
     private String endereco;
     private String telefone;
-    private String cpfCliente;
 
   public Cliente(String cpf, String nome, String endereco, String telefone) {
         this.cpf = cpf;
@@ -14,10 +13,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    // Construtor para listar pedidos
-    public Cliente(String cpfCliente) { this.cpfCliente = cpfCliente; }
+  public Cliente(String cpfCliente) {
+    this.cpf = cpfCliente;
+  }
 
-    public String getCpf() {
+  public String getCpf() {
         return cpf;
     }
 
