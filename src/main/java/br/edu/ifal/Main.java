@@ -53,7 +53,7 @@ public class Main {
     }
 
     public static void validarCpf(String cpf) throws CpfInvalidoException {
-        if (cpf.length() != 11 || cpf == null) {
+        if (cpf.length() != 11) {
             throw new CpfInvalidoException("\nCPF inválido: Deve conter exatamente 11 caracteres.");
         }
     }
