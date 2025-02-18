@@ -224,7 +224,7 @@ public class Main {
             }
 
             if (itens.isEmpty()) {
-                System.out.println("\nNenhuma item foi adicionado ao pedido. Venda não efetuada.");
+                System.out.println("\nNenhum item foi adicionado ao pedido. Venda não efetuada.");
                 return;
             }
 
